@@ -1,5 +1,7 @@
 import React, {useState,useEffect} from "react";
 import axios from "axios";
+import "../App.css";
+
 const Home = () => {
   const [sightings,setSightings]=useState(null);
 
@@ -16,7 +18,7 @@ const Home = () => {
     getSightings();
   },[])
   return (
-    <div>
+    <div className="App-header">
       <ol>
         {sightings?sightings.map((sighting,index)=>{
           return <li><a href={`http://localhost:3001/${index}`}>{`${sighting.YEAR} ${sighting.STATE}`}</a></li>

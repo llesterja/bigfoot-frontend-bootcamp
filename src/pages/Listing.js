@@ -1,10 +1,19 @@
 import React, { useEffect,useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../App.css'
+import { Button } from 'react-bootstrap';
+import {ArrowLeft} from 'react-bootstrap-icons';
 
 const Listing = () => {
   const [sighting,setSighting]=useState(null);
   const {sightingIndex} = useParams();
+  const navigate = useNavigate();
+
+  const handleClick = () =>{
+    navigate(-1);
+  }
+
   const getSighting = async() =>{
     try{
       const response =await axios.get(`http://localhost:3000/sightings/${sightingIndex}`);
@@ -19,9 +28,12 @@ const Listing = () => {
     getSighting();
   },[])
   return (
-    <div>
+    <div className="App-header">
+      <Button onClick={handleClick}>
+        <ArrowLeft/>
+      </Button>
       {sighting?sighting.map(([key,value])=>{
-        return <div> {`${key}: ${value}`} </div>;
+        return <div><br/>{`${key}: ${value}`} </div>;
       })
         :"Loading"}
     </div>
