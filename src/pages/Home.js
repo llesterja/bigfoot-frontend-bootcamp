@@ -11,11 +11,15 @@ const Home = () => {
       console.log(error)
     }
   };
+  
+  useEffect(()=>{
+    getSightings();
+  },[])
   return (
     <div>
       <ol>
         {sightings?sightings.map((sighting,index)=>{
-          return <li><a href={`http://localhost:3000/sightings/${index}`}>{`${sighting.YEAR} ${sighting.STATE}`}</a></li>
+          return <li><a href={`http://localhost:3001/${index}`}>{`${sighting.YEAR} ${sighting.STATE}`}</a></li>
         }):"Loading"}
       </ol>
     </div>
