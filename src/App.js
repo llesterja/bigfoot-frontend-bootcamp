@@ -2,8 +2,27 @@ import React, {useState,useEffect} from "react";
 import logo from "./logo.png";
 import "./App.css";
 import axios from "axios";
+import Home from "./pages/Home";
+import Listing from "./pages/Listing";
+import {
+  useLocation,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
 const App =()=> {
+  const  routes = [
+  {
+    path:'/',
+    element:<Home/>
+  },
+  {
+    path:'/',
+    element:<Listing/>
+  }
+]
   const [sightings,setSightings]=useState(null);
 
   const getSightings = async() =>{
@@ -20,13 +39,15 @@ const App =()=> {
   },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <ol>
-          {sightings?sightings.map((sighting,index)=>{
-            return <li>{`${sighting.YEAR} ${sighting.STATE}`}</li>
-          }):"Loading"}
-        </ol>
-      </header>
+      <Routes>
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={route.element}
+          />
+        ))}
+      </Routes>
     </div>
   );
   
