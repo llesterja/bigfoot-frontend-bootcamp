@@ -21,7 +21,7 @@ const Home = () => {
     <div className="App-header">
       <ol>
         {sightings?sightings.map((sighting,index)=>{
-          return <li><a href={`http://localhost:3001/${index}`}>{`${sighting.YEAR} ${sighting.STATE}`}</a></li>
+          return <li><a href={`http://localhost:3001/${index+1}`}>{`${sighting.date} ${sighting.location}`}</a></li>
         }):"Loading"}
       </ol>
     </div>

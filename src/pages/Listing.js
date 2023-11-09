@@ -29,9 +29,10 @@ const Listing = () => {
   },[])
   return (
     <div className="App-header">
-      <Button onClick={handleClick}>
+      {/* <Button onClick={handleClick} >
         <ArrowLeft/>
-      </Button>
+      </Button> */}
+
       {sighting?sighting.map(([key,value])=>{
         return <div><br/>{`${key}: ${value}`} </div>;
       })
