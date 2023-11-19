@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Home from "./pages/Home";
 import Listing from "./pages/Listing";
+import NewListing from "./pages/NewListing";
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,6 +20,10 @@ const App =()=> {
   {
     path:'/:sightingIndex',
     element:<Listing/>
+  },
+  {
+    path:'/newSighting',
+    element:<NewListing/>
   }
 ]
 

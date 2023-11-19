@@ -24,6 +24,16 @@ const Listing = () => {
     }
   };
   
+  const handleDelete = async () =>{
+    try{
+      const response = await axios.delete(`http://localhost:3000/sightings/${sightingIndex}`);
+      console.log("any response:",response);
+      navigate(-1);
+    } catch (error){
+      console.log(error)
+    }
+  }
+  
   useEffect(()=>{
     getSighting();
   },[])
@@ -37,6 +47,7 @@ const Listing = () => {
         return <div><br/>{`${key}: ${value}`} </div>;
       })
         :"Loading"}
+      <Button onClick={handleDelete}>Delete Listing</Button>
     </div>
   );
 };
